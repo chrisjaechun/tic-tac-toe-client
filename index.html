@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <title>Example</title>
+      <title>Tic-Tac-Toe 4 Pros</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
       <!-- Do not add `link` tags-->
@@ -10,8 +10,106 @@
       <!-- Do not add `script` tags-->
       <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+
+      <style>
+      @import url('https://fonts.googleapis.com/css2?family=East+Sea+Dokdo&display=swap');
+      </style>
+
     </head>
     <body>
-      <h1>Browser Template</h1>
+      <!-- NAVBAR -->
+      <nav class="navbar fixed-top navbar-dark bg-dark">
+        <!-- NAVBAR LOGO -->
+        <span class="logo">TIC TAC TOE</span>
+        <!-- Unauthenticated buttons -->
+        <div class="unauthenticated">
+        <div class="navbar-items d-flex justify-content-end">
+          <!-- Sign-In form -->
+          <form class="form-inline" id="sign-in">
+            <input class="form-control mr-sm-2" name= "email" type="email" placeholder="Email address" aria-label="email">
+            <input class="form-control mr-sm-2" name= "password" type="password" placeholder="Password" aria-label="password">
+            <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Sign In</button>
+          </form>
+          <!-- Sign-Up Modal Button -->
+          <button type="button" class="btn btn-outline-light" data-toggle="modal" data-target="#sign-up-modal">
+            Sign-Up
+          </button>
+        </div>
+        <!-- Authenticated buttons -->
+        <div class="authenticated">
+        <div class="navbar-items-2 d-flex justify-content-end">
+          // Change Password modal button
+          <button type="button" class="btn btn-outline-light" data-toggle="modal" data-target="#change-password-modal">
+            Change Password
+          </button>
+          <!-- Sign Out button -->
+          <button type="submit" class="btn btn-primary" id="sign-out">Sign Out</button>
+        </div>
+        </div>
+        <!-- Sign-Up modal -->
+        <div class="modal fade" id="sign-up-modal" tabindex="-1" aria-labelledby="signUpModal" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="signUpModal">Make an account</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form id="sign-up">
+                  <div class="form-group">
+                    <label for="emailInput">Email address</label>
+                    <input name="credentials[email]" type="text" placeholder="an@example.email" class="form-control" aria-describedby="emailHelp">
+                    <small id="emailHelp" class="form-text text-muted">It'll be our secret. Promise.</small>
+                  </div>
+                  <div class="form-group">
+                    <label for="passwordInput">Password</label>
+                    <input name="credentials[password]" type="password" placeholder="an example password" class="form-control" id="input-password">
+                  </div>
+                  <div class="form-group">
+                    <label for="passwordConfirmationInput">Password confirmation</label>
+                    <input name="credentials[password_confirmation]" type="password" placeholder="an example password" class="form-control" id="input-password-confirmation">
+                  </div>
+              </div>
+              <div class="modal-footer">
+                <p id="message"></p>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary" id="create-account">Create account</button>
+              </div>
+            </form>
+        </div>
+        <!-- Change Password modal -->
+        <div class="modal fade" id="change-password-modal" tabindex="-1" aria-labelledby="changePasswordModal" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="changePasswordModal">Change your password</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form id="change-password">
+                  <div class="form-group">
+                    <label for="currentPasswordInput">Current password</label>
+                    <input name="passwords[old]" type="password" placeholder="an example password" class="form-control" id="input-current-password">
+                  </div>
+                  <div class="form-group">
+                    <label for="newPasswordInput">New password</label>
+                    <input name="passwords[new]" type="password" placeholder="an example password" class="form-control" id="input-new-password">
+                  </div>
+              </div>
+              <div class="modal-footer">
+                <p id="message"></p>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary" id="change-password-button">Change password</button>
+              </div>
+            </form>
+        </div>
+      </nav>
+      <div class="sign-in-prompt">
+        <h1>SIGN IN TO PLAY</h1>
+      </div>
     </body>
 </html>
