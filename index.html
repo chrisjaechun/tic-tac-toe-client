@@ -26,14 +26,15 @@
         <div class="navbar-items d-flex justify-content-end">
           <!-- Sign-In form -->
           <form class="form-inline" id="sign-in">
-            <input class="form-control mr-sm-2" name= "email" type="email" placeholder="Email address" aria-label="email">
-            <input class="form-control mr-sm-2" name= "password" type="password" placeholder="Password" aria-label="password">
+            <input class="form-control mr-sm-2" name="credentials[email]" type="email" placeholder="Email address" aria-label="email">
+            <input class="form-control mr-sm-2" name="credentials[password]" type="password" placeholder="Password" aria-label="password">
             <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Sign In</button>
           </form>
           <!-- Sign-Up Modal Button -->
           <button type="button" class="btn btn-outline-light" data-toggle="modal" data-target="#sign-up-modal">
             Sign-Up
           </button>
+        </div>
         </div>
         <!-- Authenticated buttons -->
         <div class="authenticated">
@@ -43,7 +44,7 @@
             Change Password
           </button>
           <!-- Sign Out button -->
-          <button type="submit" class="btn btn-primary" id="sign-out">Sign Out</button>
+          <button type="button" class="btn btn-primary" id="sign-out">Sign Out</button>
         </div>
         </div>
         <!-- Sign-Up modal -->
@@ -73,14 +74,16 @@
                   </div>
               </div>
               <div class="modal-footer">
-                <p id="message"></p>
+                <p id="sign-up-message"></p>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <button type="submit" class="btn btn-primary" id="create-account">Create account</button>
               </div>
             </form>
         </div>
+        </div>
+        </div>
         <!-- Change Password modal -->
-        <div class="modal fade" id="change-password-modal" tabindex="-1" aria-labelledby="changePasswordModal" aria-hidden="true">
+        <div class="modal fade" id="change-password-modal" tabindex="0" aria-labelledby="changePasswordModal" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
@@ -101,15 +104,17 @@
                   </div>
               </div>
               <div class="modal-footer">
-                <p id="message"></p>
+                <p id="password-message"></p>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <button type="submit" class="btn btn-primary" id="change-password-button">Change password</button>
               </div>
             </form>
         </div>
+        </div>
+        </div>
       </nav>
       <div class="sign-in-prompt">
-        <h1>SIGN IN TO PLAY</h1>
+        <h1 id="body-message">SIGN IN TO PLAY</h1>
       </div>
     </body>
 </html>

@@ -9,7 +9,20 @@ const authEvents = require('./authorization/events.js')
 
 $(() => {
   // your JS code goes here
+  // Hiding 'Change Password' & 'Sign Out' options
   $('.authenticated').hide()
-  // $('#sign-up').on('submit', authEvents.onSignUp)
-  // $('#sign-in').on('submit', authEvents.onSignIn)
+  // Authorization event listeners
+  $('#sign-up').on('submit', authEvents.onSignUp)
+  $('#sign-in').on('submit', authEvents.onSignIn)
+  $('#change-password').on('submit', authEvents.onChangePassword)
+  $('#sign-out').on('click', authEvents. onSignOut)
 })
+
+// $(document).ready(function () {
+//   $('#signUpModalBtn').click(function () {
+//     $('#sign-up-modal').modal('show');
+//   })
+//   $('#changePasswordModalBtn').click(function () {
+//     $('#change-password-modal').modal('show');
+//   })
+// })
