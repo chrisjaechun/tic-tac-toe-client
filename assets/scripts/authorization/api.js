@@ -34,7 +34,7 @@ const signOut = function (data) {
     method: 'DELETE',
     data: data,
     headers: {
-      Authorization: 'Bearer ' +store.user.token
+      Authorization: 'Bearer ' + store.user.token
     }
   })
 }

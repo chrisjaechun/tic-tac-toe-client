@@ -4,18 +4,24 @@
 // const example = require('./example')
 
 const authEvents = require('./authorization/events.js')
+const gameEvents = require('./game/events.js')
+
 // use require without a reference to ensure a file is bundled
 // require('./example')
 
 $(() => {
   // your JS code goes here
-  // Hiding 'Change Password' & 'Sign Out' options
+  // Hide 'Change Password' & 'Sign Out' options
   $('.authenticated').hide()
+  // Hide Board
+  $('.board').hide()
   // Authorization event listeners
   $('#sign-up').on('submit', authEvents.onSignUp)
   $('#sign-in').on('submit', authEvents.onSignIn)
   $('#change-password').on('submit', authEvents.onChangePassword)
-  $('#sign-out').on('click', authEvents. onSignOut)
+  $('#sign-out').on('click', authEvents.onSignOut)
+  // Start game event listener
+  $('#start-game-button').on('click', gameEvents.onStart)
 })
 
 // $(document).ready(function () {

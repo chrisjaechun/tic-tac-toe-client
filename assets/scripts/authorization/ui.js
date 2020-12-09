@@ -38,9 +38,11 @@ const changePasswordFailure = function (error) {
 }
 
 const signOutSuccess = function () {
+  $('#body-message').show()
   $('#body-message').text('Thanks for playing!')
   $('.unauthenticated').show()
   $('.authenticated').hide()
+  $('.board').hide()
 
   store.user = null
 }
