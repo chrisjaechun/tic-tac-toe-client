@@ -14,6 +14,9 @@
       <style>
       @import url('https://fonts.googleapis.com/css2?family=East+Sea+Dokdo&display=swap');
       </style>
+      <style>
+      @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+      </style>
 
     </head>
     <body>
@@ -119,19 +122,22 @@
       </div>
       <!-- Start Game Button -->
       <div class="start-game authenticated">
-        <button type="button" class="btn btn-primary btn-lg" id="start-game-button">START GAME</button>
+        <button type="button" class="btn btn-danger btn-lg" id="start-game-button">START GAME</button>
       </div>
       <!-- Board -->
-      <!-- <div class="row board">
-        <button type="button" class="col-4 btn btn-outline-dark" data-toggle="button" aria-pressed="false"></button>
-        <button type="button" class="col-4 btn btn-outline-dark" data-toggle="button" aria-pressed="false"></button>
-        <button type="button" class="col-4 btn btn-outline-dark" data-toggle="button" aria-pressed="false"></button>
-        <button type="button" class="col-4 btn btn-outline-dark" data-toggle="button" aria-pressed="false"></button>
-        <button type="button" class="col-4 btn btn-outline-dark" data-toggle="button" aria-pressed="false"></button>
-        <button type="button" class="col-4 btn btn-outline-dark" data-toggle="button" aria-pressed="false"></button>
-        <button type="button" class="col-4 btn btn-outline-dark" data-toggle="button" aria-pressed="false"></button>
-        <button type="button" class="col-4 btn btn-outline-dark" data-toggle="button" aria-pressed="false"></button>
-        <button type="button" class="col-4 btn btn-outline-dark" data-toggle="button" aria-pressed="false"></button>
-      </div> -->
+      <div class="game-message">
+        <p id="game-message">X's turn</p>
+      </div>
+      <div class="row board">
+        <div class="col-4" id="0"></div>
+        <div class="col-4" id="1"></div>
+        <div class="col-4" id="2"></div>
+        <div class="col-4" id="3"></div>
+        <div class="col-4" id="4"></div>
+        <div class="col-4" id="5"></div>
+        <div class="col-4" id="6"></div>
+        <div class="col-4" id="7"></div>
+        <div class="col-4" id="8"></div>
+      </div>
     </body>
 </html>

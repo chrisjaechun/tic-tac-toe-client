@@ -43,6 +43,7 @@ const signOutSuccess = function () {
   $('.unauthenticated').show()
   $('.authenticated').hide()
   $('.board').hide()
+  $('#game-message').hide()
 
   store.user = null
 }

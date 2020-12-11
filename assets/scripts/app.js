@@ -15,6 +15,8 @@ $(() => {
   $('.authenticated').hide()
   // Hide Board
   $('.board').hide()
+  // Hide turn-message
+  $('#game-message').hide()
   // Authorization event listeners
   $('#sign-up').on('submit', authEvents.onSignUp)
   $('#sign-in').on('submit', authEvents.onSignIn)
@@ -22,6 +24,9 @@ $(() => {
   $('#sign-out').on('click', authEvents.onSignOut)
   // Start game event listener
   $('#start-game-button').on('click', gameEvents.onStart)
+  // Board space event listener
+  $('.col-4').on('click', gameEvents.onSelection)
+  // $('.col-4').on('click', gameEvents.onWin)
 })
 
 // $(document).ready(function () {
