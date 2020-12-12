@@ -32,6 +32,7 @@ const selection = function (position, player) {
       }
     }
   })
+  console.log(data)
 }
 
 module.exports = {

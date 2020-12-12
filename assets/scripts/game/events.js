@@ -3,11 +3,13 @@ const ui = require('./ui')
 const getFormFields = require('./../../../lib/get-form-fields')
 const store = require('./../store.js')
 
-// Determine winning combinations
-const gameArray = ['', '', 'X', '', '', 'X', '', '', 'X' ]
+// Array for winning combinations
+const gameArray = ['', '', '', '', '', '', '', '', '' ]
 
 // Determine turn
 let player = 'X'
+
+
 
 // Start game
 const onStart = function(event) {
@@ -29,10 +31,15 @@ const onSelection = function(event) {
   if ($(event.target).text() === '') {
 
     $(event.target).text(player)
+    gameArray[position] = player
+
+    onWin()
 
     turnSwitch()
 
     $('#game-message').text(player + '\'s turn')
+
+    onDraw()
 
     api.selection(position, player)
     .then(ui.selectionSuccess)
@@ -40,6 +47,7 @@ const onSelection = function(event) {
 
   } else {
     $('#game-message').text('Nahhhhhhhhh')
+
   }
 }
 
@@ -53,31 +61,45 @@ function turnSwitch() {
   }
 }
 
-// Check winner
-const onWin = function(gameArray) {
-  if (gameArray[0] !== ' ' && gameArray[0] === gameArray[1] && gameArray[0] === gameArray[2]) {
-    $('#game-message').text("We have a winner!")
-  } else if (gameArray[3] !== ' ' && gameArray[3] === gameArray[4] && gameArray[3] === gameArray[5]) {
-    $('#game-message').text("We have a winner!")
-  } else if (gameArray[6] !== ' ' && gameArray[6] === gameArray[7] && gameArray[6] === gameArray[8]) {
-    $('#game-message').text("We have a winner!")
-  } else if (gameArray[0] !== ' ' && gameArray[0] === gameArray[3] && gameArray[0] === gameArray[6]) {
-    $('#game-message').text("We have a winner!")
-  } else if (gameArray[1] !== ' ' && gameArray[1] === gameArray[4] && gameArray[1] === gameArray[7]) {
-    $('#game-message').text("We have a winner!")
-  } else if (gameArray[2] !== ' ' && gameArray[2] === gameArray[5] && gameArray[2] === gameArray[8]) {
-    $('#game-message').text("We have a winner!")
-  } else if (gameArray[0] !== ' ' && gameArray[0] === gameArray[4] && gameArray[0] === gameArray[8]) {
-    $('#game-message').text("We have a winner!")
-  } else if (gameArray[2] !== ' ' && gameArray[2] === gameArray[4] && gameArray[2] === gameArray[6]) {
-    $('#game-message').text("We have a winner!")
+// Check for winner
+const onWin = function() {
+  console.log(gameArray)
+  if (gameArray[0] !== '' && gameArray[0] === gameArray[1] && gameArray[0] === gameArray[2]) {
+    $('#winner-modal-message').modal('show')
+  } else if (gameArray[3] !== '' && gameArray[3] === gameArray[4] && gameArray[3] === gameArray[5]) {
+    $('#winner-modal-message').modal('show')
+  } else if (gameArray[6] !== '' && gameArray[6] === gameArray[7] && gameArray[6] === gameArray[8]) {
+    $('#winner-modal-message').modal('show')
+  } else if (gameArray[0] !== '' && gameArray[0] === gameArray[3] && gameArray[0] === gameArray[6]) {
+    $('#winner-modal-message').modal('show')
+  } else if (gameArray[1] !== '' && gameArray[1] === gameArray[4] && gameArray[1] === gameArray[7]) {
+    $('#winner-modal-message').modal('show')
+  } else if (gameArray[2] !== '' && gameArray[2] === gameArray[5] && gameArray[2] === gameArray[8]) {
+    $('#winner-modal-message').modal('show')
+  } else if (gameArray[0] !== '' && gameArray[0] === gameArray[4] && gameArray[0] === gameArray[8]) {
+    $('#winner-modal-message').modal('show')
+  } else if (gameArray[2] !== '' && gameArray[2] === gameArray[4] && gameArray[2] === gameArray[6]) {
+    $('#winner-modal-message').modal('show')
   } else {
-    $('#game-message').text("Very cute!")
+    $('#game-message').text(player + '\'s turn')
   }
+}
+
+// Check for draw
+const onDraw = function() {
+  let moves = 1;
+  $('.col-4').on('click', function () {
+    moves++
+    console.log(moves)
+    if (moves === 9) {
+      $('#draw-modal-message').modal('show')
+      moves = 0
+    }
+  })
 }
 
 module.exports = {
   onStart,
   onSelection,
-  // onWin
+  onWin
 }

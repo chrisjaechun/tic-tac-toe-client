@@ -14,7 +14,7 @@ const startGameSuccess = function (response) {
 
 // When player has successfully made a move
 const selectionSuccess = function (response) {
-  $(response).text('X')
+  // $(response).text('X')
 
   store.game = response.game
 

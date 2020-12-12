@@ -17,6 +17,8 @@ $(() => {
   $('.board').hide()
   // Hide turn-message
   $('#game-message').hide()
+  // Hide winner-modal
+  $('#winner-modal-message').modal('hide')
   // Authorization event listeners
   $('#sign-up').on('submit', authEvents.onSignUp)
   $('#sign-in').on('submit', authEvents.onSignIn)

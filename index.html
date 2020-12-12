@@ -17,6 +17,9 @@
       <style>
       @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
       </style>
+      <style>
+      @import url('https://fonts.googleapis.com/css2?family=Langar&display=swap');
+      </style>
 
     </head>
     <body>
@@ -47,11 +50,11 @@
             Change Password
           </button>
           <!-- Sign Out button -->
-          <button type="button" class="btn btn-primary" id="sign-out">Sign Out</button>
+          <button type="button" class="btn btn-danger" id="sign-out">Sign Out</button>
         </div>
         </div>
         <!-- Sign-Up modal -->
-        <div class="modal fade" id="sign-up-modal" tabindex="-1" aria-labelledby="signUpModal" aria-hidden="true">
+        <div class="modal fade" id="sign-up-modal" tabindex="-1" aria-labelledby="signUpModal" aria-hidden="true" data-backdrop="static">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
@@ -86,7 +89,7 @@
         </div>
         </div>
         <!-- Change Password modal -->
-        <div class="modal fade" id="change-password-modal" tabindex="0" aria-labelledby="changePasswordModal" aria-hidden="true">
+        <div class="modal fade" id="change-password-modal" tabindex="0" aria-labelledby="changePasswordModal" aria-hidden="true" data-backdrop="static">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
@@ -116,13 +119,48 @@
         </div>
         </div>
       </nav>
+      <!-- Modal Messages --->
+      <div class="winner-modal">
+      <div class="modal modal fade" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" id="winner-modal-message">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Oh zayum!</h5>
+            </div>
+            <div class="modal-body">
+              <p>We have a winner!</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" id="new-game-button">New game</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="draw-modal">
+    <div class="modal modal fade" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" id="draw-modal-message">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Oh zayum!</h5>
+          </div>
+          <div class="modal-body">
+            <p>Tis a draw!</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary">Restart game</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
       <!-- Message -->
       <div class="sign-in-prompt">
         <h1 id="body-message">SIGN IN TO PLAY</h1>
       </div>
       <!-- Start Game Button -->
       <div class="start-game authenticated">
-        <button type="button" class="btn btn-danger btn-lg" id="start-game-button">START GAME</button>
+        <button type="button" class="btn btn-primary btn-lg" id="start-game-button">START GAME</button>
       </div>
       <!-- Board -->
       <div class="game-message">
