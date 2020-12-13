@@ -9,11 +9,17 @@ const gameArray = ['', '', '', '', '', '', '', '', '' ]
 // Determine turn
 let player = 'X'
 
-
+// Determine draw
+// let moves = 1
 
 // Start game
 const onStart = function(event) {
   event.preventDefault()
+
+  $('.col-4').text('')
+  gameArray.forEach((position, index, gameArray) => {
+    gameArray[index] = '';
+  });
 
   const data = getFormFields(event.target)
 
@@ -39,7 +45,7 @@ const onSelection = function(event) {
 
     $('#game-message').text(player + '\'s turn')
 
-    onDraw()
+    // onDraw()
 
     api.selection(position, player)
     .then(ui.selectionSuccess)
@@ -80,26 +86,39 @@ const onWin = function() {
     $('#winner-modal-message').modal('show')
   } else if (gameArray[2] !== '' && gameArray[2] === gameArray[4] && gameArray[2] === gameArray[6]) {
     $('#winner-modal-message').modal('show')
+    // Check for draw
+  } else if (gameArray[0] !== '' && gameArray[1] !== '' && gameArray[2] !== '' && gameArray[3] !== '' && gameArray[4] !== '' && gameArray[5] !== '' && gameArray[6] !== '' && gameArray[7] !== '' && gameArray[8] !== ''){
+    $('#draw-modal-message').modal('show')
   } else {
     $('#game-message').text(player + '\'s turn')
   }
 }
 
 // Check for draw
-const onDraw = function() {
-  let moves = 1;
-  $('.col-4').on('click', function () {
-    moves++
-    console.log(moves)
-    if (moves === 9) {
-      $('#draw-modal-message').modal('show')
-      moves = 0
-    }
-  })
+// const onDraw = function() {
+//   let moves = 1
+//   $('.col-4').on('click', function () {
+//     ++moves;
+//     console.log(moves)
+//   if (moves === 9) {
+//     $('#draw-modal-message').modal('show')
+//     moves = 1
+//     }
+//   })
+// }
+
+// Restart game
+const onRestart = function() {
+  $('#winner-modal-message').modal('hide')
+  $('#draw-modal-message').modal('hide')
+  $('.col-4').text('')
+  gameArray.forEach((position, index, gameArray) => {
+    gameArray[index] = '';
+  });
 }
 
 module.exports = {
   onStart,
   onSelection,
-  onWin
+  onRestart
 }

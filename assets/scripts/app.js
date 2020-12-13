@@ -28,14 +28,7 @@ $(() => {
   $('#start-game-button').on('click', gameEvents.onStart)
   // Board space event listener
   $('.col-4').on('click', gameEvents.onSelection)
-  // $('.col-4').on('click', gameEvents.onWin)
+  // Restart game event listeners
+  $('#new-game-button').on('click', gameEvents.onRestart)
+  $('#restart-game-button').on('click', gameEvents.onRestart)
 })
-
-// $(document).ready(function () {
-//   $('#signUpModalBtn').click(function () {
-//     $('#sign-up-modal').modal('show');
-//   })
-//   $('#changePasswordModalBtn').click(function () {
-//     $('#change-password-modal').modal('show');
-//   })
-// })

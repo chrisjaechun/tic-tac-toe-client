@@ -1,4 +1,5 @@
 const store = require('./../store.js')
+const gameArray = require('./../game/events.js')
 
 const signUpSuccess = function() {
   $('#sign-up-message').text('You\'re in!')
@@ -45,7 +46,14 @@ const signOutSuccess = function () {
   $('.board').hide()
   $('#game-message').hide()
 
+  // $('.col-4').text('')
+  // gameArray.forEach((position, index, gameArray) => {
+  //   gameArray[index] = '';
+  // })
+
   store.user = null
+
+  console.log(store.user)
 }
 
 const signOutFailure = function () {
