@@ -6,12 +6,9 @@
   font-size: 35px;
 };
 
-// .navbar-message {
-//   display: flex;
-//   justify-content: center;
-//   align-content: center;
-//   color: #FFFFFF;
-// }
+.footer {
+  justify-content: center;
+}
 
 .sign-in-prompt {
   padding: 0;
@@ -78,4 +75,8 @@ h1 {
   top: 9%;
   left: 50%;
   transform: translateX(-50%) translateY(-10%);
+}
+
+.endgame-modals {
+  font-family: 'Permanent Marker', sans-serif;
 }

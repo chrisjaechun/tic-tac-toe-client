@@ -40,9 +40,17 @@ const onSignOut = function (event) {
     .catch(ui.signOutFailure)
 }
 
+const onClose = function (event) {
+  $('#signUpModal').text('Create an account')
+  $('#sign-up-message').text('')
+  $('#changePasswordModal').text('Change your password')
+  $('#password-message').text('')
+}
+
 module.exports = {
   onSignUp,
   onSignIn,
   onChangePassword,
-  onSignOut
+  onSignOut,
+  onClose
 }

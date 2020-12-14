@@ -37,7 +37,7 @@
             <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Sign-In</button>
           </form>
           <!-- Sign-Up Modal Button -->
-          <button type="button" class="btn btn-outline-light" data-toggle="modal" data-target="#sign-up-modal">
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#sign-up-modal">
             Sign-Up
           </button>
         </div>
@@ -53,12 +53,21 @@
           <button type="button" class="btn btn-danger" id="sign-out">Sign Out</button>
         </div>
         </div>
-        <!-- Sign-Up modal -->
-        <div class="modal fade" id="sign-up-modal" tabindex="-1" aria-labelledby="signUpModal" aria-hidden="true" data-backdrop="static">
+      </nav>
+      <!-- Footer nav -->
+      <div class="footer authenticated">
+      <nav class="navbar fixed-bottom navbar-light bg-light justify-content-center">
+        <button type="button" class="btn btn-outline-dark" id="get-games">
+          How many games?
+        </button>
+      </nav>
+      </div>
+      <!-- Sign-Up modal -->
+      <div class="modal fade" id="sign-up-modal" tabindex="-1" aria-labelledby="signUpModal" aria-hidden="true" data-backdrop="static">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="signUpModal">Make an account</h5>
+                <h5 class="modal-title" id="signUpModal">Create an account</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
@@ -67,29 +76,29 @@
                 <form id="sign-up">
                   <div class="form-group">
                     <label for="emailInput">Email address</label>
-                    <input name="credentials[email]" type="text" placeholder="an@example.email" class="form-control" aria-describedby="emailHelp">
+                    <input name="credentials[email]" type="text" placeholder="chrisisballin@hotmail.com" class="form-control" aria-describedby="emailHelp">
                     <small id="emailHelp" class="form-text text-muted">It'll be our secret. Promise.</small>
                   </div>
                   <div class="form-group">
                     <label for="passwordInput">Password</label>
-                    <input name="credentials[password]" type="password" placeholder="an example password" class="form-control" id="input-password">
+                    <input name="credentials[password]" type="password" placeholder="example password" class="form-control" id="input-password">
                   </div>
                   <div class="form-group">
                     <label for="passwordConfirmationInput">Password confirmation</label>
-                    <input name="credentials[password_confirmation]" type="password" placeholder="an example password" class="form-control" id="input-password-confirmation">
+                    <input name="credentials[password_confirmation]" type="password" placeholder="example password" class="form-control" id="input-password-confirmation">
                   </div>
               </div>
               <div class="modal-footer">
                 <p id="sign-up-message"></p>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" id="sign-up-close">Close</button>
                 <button type="submit" class="btn btn-primary" id="create-account">Create account</button>
               </div>
             </form>
         </div>
         </div>
-        </div>
-        <!-- Change Password modal -->
-        <div class="modal fade" id="change-password-modal" tabindex="0" aria-labelledby="changePasswordModal" aria-hidden="true" data-backdrop="static">
+      </div>
+      <!-- Change Password modal -->
+      <div class="modal fade" id="change-password-modal" tabindex="0" aria-labelledby="changePasswordModal" aria-hidden="true" data-backdrop="static">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
@@ -102,59 +111,80 @@
                 <form id="change-password">
                   <div class="form-group">
                     <label for="currentPasswordInput">Current password</label>
-                    <input name="passwords[old]" type="password" placeholder="an example password" class="form-control" id="input-current-password">
+                    <input name="passwords[old]" type="password" placeholder="current password" class="form-control" id="input-current-password">
                   </div>
                   <div class="form-group">
                     <label for="newPasswordInput">New password</label>
-                    <input name="passwords[new]" type="password" placeholder="an example password" class="form-control" id="input-new-password">
+                    <input name="passwords[new]" type="password" placeholder="new password" class="form-control" id="input-new-password">
                   </div>
               </div>
               <div class="modal-footer">
                 <p id="password-message"></p>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" id="change-password-close">Close</button>
                 <button type="submit" class="btn btn-primary" id="change-password-button">Change password</button>
               </div>
             </form>
         </div>
         </div>
-        </div>
-      </nav>
+      </div>
       <!-- Modal Messages --->
-      <div class="winner-modal">
-      <div class="modal modal fade" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" id="winner-modal-message">
+      <div class="endgame-modals">
+        <!-- Winner modal -->
+        <div class="winner-modal">
+        <div class="modal modal fade" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" id="winner-modal-message">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Oh zayum!</h5>
+              </div>
+              <div class="modal-body">
+                <p>We have a winner!</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="new-game-button">New game</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+        <!-- Draw modal -->
+        <div class="draw-modal">
+        <div class="modal modal fade" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" id="draw-modal-message">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title">Oh zayum!</h5>
             </div>
             <div class="modal-body">
-              <p>We have a winner!</p>
+              <p>Tis a draw!</p>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-primary" id="new-game-button">New game</button>
+              <button type="button" class="btn btn-primary" id="restart-game-button">Restart game</button>
+            </div>
+          </div>
+        </div>
+        </div>
+        <!-- Get games modal -->
+        <div class="modal fade" id="get-games-modal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Games played</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <p id="number-of-games-played"></p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="draw-modal">
-    <div class="modal modal fade" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" id="draw-modal-message">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Oh zayum!</h5>
-          </div>
-          <div class="modal-body">
-            <p>Tis a draw!</p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-primary" id="restart-game-button">Restart game</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-      <!-- Message -->
+      <!-- Body message -->
       <div class="sign-in-prompt">
         <h1 id="body-message">SIGN IN TO PLAY</h1>
       </div>

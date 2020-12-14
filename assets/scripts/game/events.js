@@ -13,7 +13,7 @@ let player = 'X'
 // let moves = 1
 
 // Start game
-const onStart = function(event) {
+const onStart = function (event) {
   event.preventDefault()
 
   $('.col-4').text('')
@@ -30,20 +30,21 @@ const onStart = function(event) {
 
 
 // Make a move
-const onSelection = function(event) {
-
+const onSelection = function (event) {
+  // Target div element by ID
   let position = event.target.id
-
+  // If div is blank
   if ($(event.target).text() === '') {
-
+    // Replace text with player value
     $(event.target).text(player)
+    // Add player value to respective array index
     gameArray[position] = player
+
+    // console.log(gameArray)
 
     onWin()
 
     turnSwitch()
-
-    $('#game-message').text(player + '\'s turn')
 
     // onDraw()
 
@@ -52,6 +53,7 @@ const onSelection = function(event) {
     .catch(ui.selectionFailure)
 
   } else {
+    // Invalid space
     $('#game-message').text('Nahhhhhhhhh')
 
   }
@@ -60,16 +62,26 @@ const onSelection = function(event) {
 
 // Switch turns
 function turnSwitch() {
-  if (player === 'X') {
+  // If gameArray is empty - player is always X
+  if (gameArray[0] == "" && gameArray[1] == "" && gameArray[2] == "" && gameArray[3] == "" && gameArray[4] == "" && gameArray[5] == "" && gameArray[6] == "" && gameArray[7] == "" && gameArray[8] == "" && player === 'O') {
+    player === 'X'
+  } else if (player === 'X') {
     player = 'O'
   } else {
+    player = 'X'
+  }
+  $('#game-message').text(player + '\'s turn')
+}
+
+// If O wins, player goes back to value of 'X'
+function turnReset() {
+  if (player === 'O') {
     player = 'X'
   }
 }
 
 // Check for winner
-const onWin = function() {
-  console.log(gameArray)
+const onWin = function () {
   if (gameArray[0] !== '' && gameArray[0] === gameArray[1] && gameArray[0] === gameArray[2]) {
     $('#winner-modal-message').modal('show')
   } else if (gameArray[3] !== '' && gameArray[3] === gameArray[4] && gameArray[3] === gameArray[5]) {
@@ -86,7 +98,7 @@ const onWin = function() {
     $('#winner-modal-message').modal('show')
   } else if (gameArray[2] !== '' && gameArray[2] === gameArray[4] && gameArray[2] === gameArray[6]) {
     $('#winner-modal-message').modal('show')
-    // Check for draw
+  // Check for draw
   } else if (gameArray[0] !== '' && gameArray[1] !== '' && gameArray[2] !== '' && gameArray[3] !== '' && gameArray[4] !== '' && gameArray[5] !== '' && gameArray[6] !== '' && gameArray[7] !== '' && gameArray[8] !== ''){
     $('#draw-modal-message').modal('show')
   } else {
@@ -108,17 +120,39 @@ const onWin = function() {
 // }
 
 // Restart game
-const onRestart = function() {
+const onRestart = function (event) {
+  turnSwitch()
   $('#winner-modal-message').modal('hide')
   $('#draw-modal-message').modal('hide')
+  // Clear board
   $('.col-4').text('')
+  // Clear array
   gameArray.forEach((position, index, gameArray) => {
     gameArray[index] = '';
+    // console.log(gameArray)
+  turnReset()
+  $('#game-message').text(player + '\'s turn')
+    // console.log(player)
   });
+}
+
+const onGetGames = function (event) {
+  $('#get-games-modal').modal('show')
+
+  event.preventDefault()
+
+  const gamesData = getFormFields(event.target)
+
+  api.getGames(gamesData)
+   .then(ui.onGetGamesSuccess)
+   .catch(ui.onGetGamesFailure)
+
 }
 
 module.exports = {
   onStart,
   onSelection,
-  onRestart
+  onRestart,
+  onGetGames,
+  turnReset
 }

@@ -14,13 +14,13 @@ const startGame = function () {
 }
 
 
-// Patch player move
+// PATCH player move
 const selection = function (position, player) {
   return $.ajax({
     url: config.apiUrl + '/games/' + store.game._id,
     method: 'PATCH',
     headers: {
-      Authorization: 'Bearer '+ store.user.token
+      Authorization: 'Bearer ' + store.user.token
     },
     data: {
       "game": {
@@ -32,10 +32,22 @@ const selection = function (position, player) {
       }
     }
   })
-  console.log(data)
+}
+
+// GET number of games played
+const getGames = function () {
+  return $.ajax({
+    url: config.apiUrl + '/games',
+    method: 'GET',
+    headers: {
+      Authorization: 'Bearer ' + store.user.token
+    },
+    data: {}
+  })
 }
 
 module.exports = {
   startGame,
-  selection
+  selection,
+  getGames
 }

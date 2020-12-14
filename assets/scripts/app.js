@@ -24,6 +24,9 @@ $(() => {
   $('#sign-in').on('submit', authEvents.onSignIn)
   $('#change-password').on('submit', authEvents.onChangePassword)
   $('#sign-out').on('click', authEvents.onSignOut)
+  // Revert authorization messages in modals
+  $('#sign-up-close').on('click', authEvents.onClose)
+  $('#change-password-close').on('click', authEvents.onClose)
   // Start game event listener
   $('#start-game-button').on('click', gameEvents.onStart)
   // Board space event listener
@@ -31,4 +34,6 @@ $(() => {
   // Restart game event listeners
   $('#new-game-button').on('click', gameEvents.onRestart)
   $('#restart-game-button').on('click', gameEvents.onRestart)
+  // Get number of games played
+  $('#get-games').on('click', gameEvents.onGetGames)
 })

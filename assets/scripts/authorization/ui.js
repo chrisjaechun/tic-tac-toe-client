@@ -2,19 +2,20 @@ const store = require('./../store.js')
 const gameArray = require('./../game/events.js')
 
 const signUpSuccess = function() {
-  $('#sign-up-message').text('You\'re in!')
+  $('#body-message').text('YOU\'RE IN! SIGN IN TO PLAY... NOW')
+  $('#sign-up-modal').modal('hide')
   $('form').trigger('reset')
 }
 
 const signUpFailure = function(error) {
-  $('#sign-up-message').text('Aw, shucks.')
+  $('#signUpModal').text('Ruh-roh')
+  $('#sign-up-message').text('Shucks. Ya gotta be more original.')
   $('form').trigger('reset')
 }
 
 const signInSuccess = function(response) {
-  $('#body-message').text('Ya made it!')
+  $('#body-message').text('YA MADE IT!')
   $('form').trigger('reset')
-  console.log(response.user)
 
   store.user = response.user
 
@@ -23,24 +24,26 @@ const signInSuccess = function(response) {
 }
 
 const signInFailure = function(error) {
-  $('#body-message').text('Ya goofed.')
+  $('#body-message').text('YA GOOFED.')
   $('form').trigger('reset')
 }
 
 const changePasswordSuccess = function () {
-  $('#password-message').text('Password changed!')
+  $('#changePasswordModal').text('Password changed!')
+  $('#password-message').text('That new password smell.')
   $('form').trigger('reset')
 
 }
 
 const changePasswordFailure = function (error) {
+  $('#changePasswordModal').text('Hmm, hint below')
   $('#password-message').text('Is that the same password?')
   $('form').trigger('reset')
 }
 
 const signOutSuccess = function () {
   $('#body-message').show()
-  $('#body-message').text('Thanks for playing!')
+  $('#body-message').text('THANKS FOR PLAYING!')
   $('.unauthenticated').show()
   $('.authenticated').hide()
   $('.board').hide()
@@ -53,7 +56,7 @@ const signOutSuccess = function () {
 
   store.user = null
 
-  console.log(store.user)
+  // console.log(store.user)
 }
 
 const signOutFailure = function () {
