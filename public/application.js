@@ -4017,6 +4017,10 @@ var onWin = function onWin() {
 
 // Restart game
 var onRestart = function onRestart(event) {
+  var data = getFormFields(event.target);
+
+  api.startGame(data).then(ui.startGameSuccess).catch(ui.startGameFailure);
+
   turnSwitch();
   $('#winner-modal-message').modal('hide');
   $('#draw-modal-message').modal('hide');
@@ -4037,9 +4041,7 @@ var onGetGames = function onGetGames(event) {
 
   event.preventDefault();
 
-  var gamesData = getFormFields(event.target);
-
-  api.getGames(gamesData).then(ui.onGetGamesSuccess).catch(ui.onGetGamesFailure);
+  api.getGames().then(ui.onGetGamesSuccess).catch(ui.onGetGamesFailure);
 };
 
 module.exports = {
@@ -16804,7 +16806,7 @@ var onSignIn = function onSignIn(event) {
 
   api.signIn(data).then(ui.signInSuccess).catch(ui.signInFailure);
 
-  console.log(data);
+  // console.log(data)
 };
 
 var onChangePassword = function onChangePassword(event) {
@@ -17070,6 +17072,9 @@ var selectionSuccess = function selectionSuccess(response) {
 
 // Getting number of games
 var onGetGamesSuccess = function onGetGamesSuccess(responseData) {
+
+  // console.log(responseData.games)
+
   $('#number-of-games-played').text('You\'ve played ' + responseData.games.length + ' games.');
 };
 
