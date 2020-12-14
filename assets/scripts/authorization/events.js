@@ -45,6 +45,7 @@ const onClose = function (event) {
   $('#sign-up-message').text('')
   $('#changePasswordModal').text('Change your password')
   $('#password-message').text('')
+  $('form').trigger('reset')
 }
 
 // To revert text back in body message, after sign-out

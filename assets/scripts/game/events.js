@@ -23,6 +23,8 @@ const onStart = function (event) {
     gameArray[index] = '';
   });
 
+  turnReset()
+
   const data = getFormFields(event.target)
 
   api.startGame(data)
@@ -80,6 +82,7 @@ function turnReset() {
   if (player === 'O') {
     player = 'X'
   }
+  $('#game-message').text(player + '\'s turn')
 }
 
 // Check for winner
