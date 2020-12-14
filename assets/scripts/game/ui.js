@@ -23,7 +23,10 @@ const selectionSuccess = function (response) {
 
 // Getting number of games
 const onGetGamesSuccess = function (responseData) {
-  $('#number-of-games-played').text(`You've played ${responseData.games.length} games.`)
+
+console.log(responseData.games)
+
+$('#number-of-games-played').text(`You've played ${responseData.games.length} games.`)
 }
 
 module.exports = {

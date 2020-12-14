@@ -4,7 +4,7 @@ const getFormFields = require('./../../../lib/get-form-fields')
 const store = require('./../store.js')
 
 // Array for winning combinations
-const gameArray = ['', '', '', '', '', '', '', '', '' ]
+const gameArray = ['', '', '', '', '', '', '', '', '']
 
 // Determine turn
 let player = 'X'
@@ -121,6 +121,12 @@ const onWin = function () {
 
 // Restart game
 const onRestart = function (event) {
+  const data = getFormFields(event.target)
+
+  api.startGame(data)
+    .then(ui.startGameSuccess)
+    .catch(ui.startGameFailure)
+
   turnSwitch()
   $('#winner-modal-message').modal('hide')
   $('#draw-modal-message').modal('hide')
@@ -141,9 +147,7 @@ const onGetGames = function (event) {
 
   event.preventDefault()
 
-  const gamesData = getFormFields(event.target)
-
-  api.getGames(gamesData)
+  api.getGames()
    .then(ui.onGetGamesSuccess)
    .catch(ui.onGetGamesFailure)
 
