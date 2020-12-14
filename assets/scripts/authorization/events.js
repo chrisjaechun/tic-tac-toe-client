@@ -39,7 +39,7 @@ const onSignOut = function (event) {
     .then(ui.signOutSuccess)
     .catch(ui.signOutFailure)
 }
-
+// To reset form text upon close
 const onClose = function (event) {
   $('#signUpModal').text('Create an account')
   $('#sign-up-message').text('')
@@ -47,10 +47,16 @@ const onClose = function (event) {
   $('#password-message').text('')
 }
 
+// To revert text back in body message, after sign-out
+const clickRefresh = function (event) {
+  $('#body-message').text('SIGN IN TO PLAY')
+}
+
 module.exports = {
   onSignUp,
   onSignIn,
   onChangePassword,
   onSignOut,
-  onClose
+  onClose,
+  clickRefresh
 }

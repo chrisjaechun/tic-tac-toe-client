@@ -19,6 +19,10 @@ $(() => {
   $('#game-message').hide()
   // Hide winner-modal
   $('#winner-modal-message').modal('hide')
+  // Hide get games played button
+  $('#get-games').hide()
+  // Revert body message on click
+  $('#body-message').on('click', authEvents.clickRefresh)
   // Authorization event listeners
   $('#sign-up').on('submit', authEvents.onSignUp)
   $('#sign-in').on('submit', authEvents.onSignIn)

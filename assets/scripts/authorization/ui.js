@@ -21,6 +21,8 @@ const signInSuccess = function(response) {
 
   $('.unauthenticated').hide()
   $('.authenticated').show()
+
+  $('#get-games').hide()
 }
 
 const signInFailure = function(error) {

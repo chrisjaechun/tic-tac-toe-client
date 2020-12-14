@@ -16,6 +16,8 @@ let player = 'X'
 const onStart = function (event) {
   event.preventDefault()
 
+  $('#get-games').show()
+
   $('.col-4').text('')
   gameArray.forEach((position, index, gameArray) => {
     gameArray[index] = '';

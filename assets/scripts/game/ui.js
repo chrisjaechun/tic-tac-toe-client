@@ -24,9 +24,11 @@ const selectionSuccess = function (response) {
 // Getting number of games
 const onGetGamesSuccess = function (responseData) {
 
-// console.log(responseData.games)
-
-$('#number-of-games-played').text(`You've played ${responseData.games.length} games.`)
+if (responseData.games.length === 1) {
+  $('#number-of-games-played').text('Golly! You\'re playing your first game!')
+} else {
+  $('#number-of-games-played').text(`You're currently playing game ${responseData.games.length}.`)
+}
 }
 
 module.exports = {
