@@ -3920,6 +3920,8 @@ var player = 'X';
 var onStart = function onStart(event) {
   event.preventDefault();
 
+  $('#get-games').show();
+
   $('.col-4').text('');
   gameArray.forEach(function (position, index, gameArray) {
     gameArray[index] = '';
@@ -16760,6 +16762,10 @@ $(function () {
   $('#game-message').hide();
   // Hide winner-modal
   $('#winner-modal-message').modal('hide');
+  // Hide get games played button
+  $('#get-games').hide();
+  // Revert body message on click
+  $('#body-message').on('click', authEvents.clickRefresh);
   // Authorization event listeners
   $('#sign-up').on('submit', authEvents.onSignUp);
   $('#sign-in').on('submit', authEvents.onSignIn);
@@ -16820,7 +16826,7 @@ var onChangePassword = function onChangePassword(event) {
 var onSignOut = function onSignOut(event) {
   api.signOut().then(ui.signOutSuccess).catch(ui.signOutFailure);
 };
-
+// To reset form text upon close
 var onClose = function onClose(event) {
   $('#signUpModal').text('Create an account');
   $('#sign-up-message').text('');
@@ -16828,12 +16834,18 @@ var onClose = function onClose(event) {
   $('#password-message').text('');
 };
 
+// To revert text back in body message, after sign-out
+var clickRefresh = function clickRefresh(event) {
+  $('#body-message').text('SIGN IN TO PLAY');
+};
+
 module.exports = {
   onSignUp: onSignUp,
   onSignIn: onSignIn,
   onChangePassword: onChangePassword,
   onSignOut: onSignOut,
-  onClose: onClose
+  onClose: onClose,
+  clickRefresh: clickRefresh
 };
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(27)))
 
@@ -16927,6 +16939,8 @@ var signInSuccess = function signInSuccess(response) {
 
   $('.unauthenticated').hide();
   $('.authenticated').show();
+
+  $('#get-games').hide();
 };
 
 var signInFailure = function signInFailure(error) {
@@ -17073,9 +17087,11 @@ var selectionSuccess = function selectionSuccess(response) {
 // Getting number of games
 var onGetGamesSuccess = function onGetGamesSuccess(responseData) {
 
-  // console.log(responseData.games)
-
-  $('#number-of-games-played').text('You\'ve played ' + responseData.games.length + ' games.');
+  if (responseData.games.length === 1) {
+    $('#number-of-games-played').text('Golly! You\'re playing your first game!');
+  } else {
+    $('#number-of-games-played').text('You\'re currently playing game ' + responseData.games.length + '.');
+  }
 };
 
 module.exports = {
