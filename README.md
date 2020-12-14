@@ -160,7 +160,9 @@ total number of games, so I console logged the API response and noticed the
 
 """Whoa. This a big branch." -George of the Jungle" -Christopher J Chun (jk)
 
+### What's left to do
 
+Gotta optimize for mobile. :(
 
 ## [License](LICENSE)
 
