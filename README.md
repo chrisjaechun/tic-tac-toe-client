@@ -17,7 +17,7 @@
 
 ### Wireframes
 
-![Original wireframe](https://imgur.com/sKcMeEn)
+![Original wireframe](https://i.imgur.com/sKcMeEn.png)
 
 Things are different. I wanted to display how many games were played but realize
 the requirements ask for a button instead. I also removed the restart game button
